@@ -11,6 +11,7 @@ export default function Document() {
     <Html>
       <Head>
         <link rel="icon" href="/favicon.png" />
+        <title>Index of https://epoch.tw/</title>
       </Head>
       <body>
         <Main />
