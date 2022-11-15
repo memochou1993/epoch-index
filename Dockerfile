@@ -5,20 +5,14 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm ci
+RUN npm ci --only=production
 RUN npm run build
 
-RUN rm -rf node_modules
-RUN npm ci --only=production
-
 # final sage
-FROM node:16-alpine
+FROM nginx:stable-alpine
 
-WORKDIR /app
+COPY --from=builder /app/out /usr/share/nginx/html
 
-COPY --from=builder /app .
+EXPOSE 80
 
-ENV HOST 0.0.0.0
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+CMD ["nginx", "-g", "daemon off;"]
