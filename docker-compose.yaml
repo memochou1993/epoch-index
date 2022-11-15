@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    container_name: epoch-index
+    container_name: index-page-next
     build: .
     ports:
       - "${APP_PORT}:3000"
