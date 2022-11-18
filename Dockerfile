@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 RUN npm run build
 
 # final sage
